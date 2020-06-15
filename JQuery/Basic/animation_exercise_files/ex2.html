@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>jQuery animation</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <style>
+        li {
+            background-color: #32CD32;
+            list-style-type: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="animate">
+        <h1>TODO-List</h1>
+    </div>
+    <ul>
+        <li>Learning JS</li>
+        <li>Workout</li>
+        <li>Eat</li>
+        <li>Relax</li>
+        <li>Sleep</li>
+    </ul>
+    <input id="userinput" type="text"><button type="submit" id="add">Add!</button>
+    <script>
+        $(document).ready(function () {
+            $('#add').on('click', function () {
+                let ourinput = $("#userinput").val();
+                $('ul').prepend("<li>" + ourinput + "</li>");
+                $("#userinput").val("");
+                addEvent();
+            }); // end of insert function
+
+            function addEvent() {
+                $('li').on('click', function () {
+                    $(this).animate({
+                        opacity: 0.0,
+                        paddingLeft: '+=80'
+                    }, 500, function () {
+                        $(this).remove();
+                    });
+                });
+            }   // end of function adds    
+            addEvent();
+        }); //end of document ready
+    </script>
+</body>
+
+</html>
